@@ -36,13 +36,14 @@ Data sample:
 
 ``` php
 [
-    'name' => 'Netherlands',
-    'alpha2' => 'NL',
-    'alpha3' => 'NLD',
-    'numeric' => '528',
+    'name' => 'United States of America',
+    'short_name' => 'United States',
+    'alpha2' => 'US',
+    'alpha3' => 'USA',
+    'numeric' => '840',
     'currency' => [
-        'EUR',
-    ]
+        'USD',
+    ],
 ]
 ```
 
