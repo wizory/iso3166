@@ -29,9 +29,10 @@
         {
             "name": "Rob Bast",
             "email": "rob.bast@gmail.com"
-        },
+        },{
             "name": "Wizory",
             "email": "support@wizory.com"
+        }
     ],
     "support": {
         "issues": "https://github.com/wizory/iso3166/issues",
