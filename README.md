@@ -1,9 +1,6 @@
-# league/iso3166
+# wizory/iso3166
 
-A PHP library providing ISO 3166-1 data.
-
-[![Build Status](https://img.shields.io/travis/thephpleague/iso3166/master.svg?style=flat-square)](https://travis-ci.org/thephpleague/iso3166)
-[![License](https://img.shields.io/packagist/l/league/iso3166.svg?style=flat-square)](https://packagist.org/packages/league/iso3166)
+A PHP library providing ISO 3166-1 and related data.
 
 ## What is ISO 3166-1
 
@@ -17,12 +14,10 @@ A PHP library providing ISO 3166-1 data.
 ## Installing
 
 ``` sh
-$ composer require league/iso3166
+$ composer require wizory/iso3166
 ```
 
 ## Using
-
-See [using](https://iso3166.thephpleague.com/using) section of the documentation.
 
 Quick guide:
 
@@ -53,7 +48,7 @@ Feel free to submit a pull request or create an issue.
 
 ## License
 
-league/iso3166 is licensed under the MIT license.
+wizory/iso3166 is licensed under the MIT license.
 
 ## Source(s)
 
