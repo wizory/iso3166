@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [2.1.1] - 2018/07/12
+* New: `short_name` property for nicer dropdown/ui names
+* New:  ✨ wizory fork starts here ✨
+
 ## [Unreleased]
 
 ## [2.0.0] - 2017/05/11
