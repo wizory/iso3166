@@ -12,6 +12,7 @@ namespace League\ISO3166;
 use League\ISO3166\Exception\DomainException;
 use League\ISO3166\Exception\InvalidArgumentException;
 use League\ISO3166\Exception\OutOfBoundsException;
+use League\ISO3166\ISO3166;
 
 class ISO3166Test extends \PHPUnit_Framework_TestCase
 {
@@ -211,5 +212,15 @@ class ISO3166Test extends \PHPUnit_Framework_TestCase
         }
 
         $this->assertEquals(count($this->iso3166), $i, 'Compare iterated count to count($iso3166).');
+    }
+
+    /**
+     * @testdox Country data contains 'short_name' property.
+     */
+    public function testShortName()
+    {
+        $data = (new ISO3166)->alpha2('US');
+        $this->assertArrayHasKey('short_name',$data);
+        $this->assertEquals('United States', $data['short_name']);
     }
 }

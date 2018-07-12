@@ -12,8 +12,7 @@ namespace League\ISO3166;
 use League\ISO3166\Exception\DomainException;
 use League\ISO3166\Exception\OutOfBoundsException;
 
-final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvider
-{
+final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvider {
     /**
      * @var string
      */
@@ -38,8 +37,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
     /**
      * @param array[] $countries replace default dataset with given array
      */
-    public function __construct(array $countries = [])
-    {
+    public function __construct(array $countries = []) {
         if ($countries) {
             $this->countries = $countries;
         }
@@ -48,8 +46,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
     /**
      * {@inheritdoc}
      */
-    public function name($name)
-    {
+    public function name($name) {
         Guards::guardAgainstInvalidName($name);
 
         return $this->lookup(self::KEY_NAME, $name);
@@ -58,8 +55,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
     /**
      * {@inheritdoc}
      */
-    public function alpha2($alpha2)
-    {
+    public function alpha2($alpha2) {
         Guards::guardAgainstInvalidAlpha2($alpha2);
 
         return $this->lookup(self::KEY_ALPHA2, $alpha2);
@@ -68,8 +64,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
     /**
      * {@inheritdoc}
      */
-    public function alpha3($alpha3)
-    {
+    public function alpha3($alpha3) {
         Guards::guardAgainstInvalidAlpha3($alpha3);
 
         return $this->lookup(self::KEY_ALPHA3, $alpha3);
@@ -78,8 +73,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
     /**
      * {@inheritdoc}
      */
-    public function numeric($numeric)
-    {
+    public function numeric($numeric) {
         Guards::guardAgainstInvalidNumeric($numeric);
 
         return $this->lookup(self::KEY_NUMERIC, $numeric);
@@ -88,8 +82,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
     /**
      * @return array[]
      */
-    public function all()
-    {
+    public function all() {
         return $this->countries;
     }
 
@@ -100,8 +93,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
      *
      * @return \Generator
      */
-    public function iterator($key = self::KEY_ALPHA2)
-    {
+    public function iterator($key = self::KEY_ALPHA2) {
         if (!in_array($key, $this->keys, true)) {
             throw new DomainException(sprintf(
                 'Invalid value for $indexBy, got "%s", expected one of: %s',
@@ -122,8 +114,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
      *
      * @return int
      */
-    public function count()
-    {
+    public function count() {
         return count($this->countries);
     }
 
@@ -134,8 +125,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
      *
      * @return \Generator
      */
-    public function getIterator()
-    {
+    public function getIterator() {
         foreach ($this->countries as $country) {
             yield $country;
         }
@@ -153,8 +143,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
      *
      * @return array
      */
-    private function lookup($key, $value)
-    {
+    private function lookup($key, $value) {
         foreach ($this->countries as $country) {
             if (0 === strcasecmp($value, $country[$key])) {
                 return $country;
@@ -174,6 +163,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
     protected $countries = [
         [
             'name' => 'Afghanistan',
+            'short_name' => 'Afghanistan',
             'alpha2' => 'AF',
             'alpha3' => 'AFG',
             'numeric' => '004',
@@ -183,6 +173,8 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Åland Islands',
+            'short_name' => 'Åland Islands',
+            'short_name' => 'Åland Islands',
             'alpha2' => 'AX',
             'alpha3' => 'ALA',
             'numeric' => '248',
@@ -192,6 +184,8 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Albania',
+            'short_name' => 'Albania',
+            'short_name' => 'Albania',
             'alpha2' => 'AL',
             'alpha3' => 'ALB',
             'numeric' => '008',
@@ -201,6 +195,8 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Algeria',
+            'short_name' => 'Algeria',
+            'short_name' => 'Algeria',
             'alpha2' => 'DZ',
             'alpha3' => 'DZA',
             'numeric' => '012',
@@ -210,6 +206,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'American Samoa',
+            'short_name' => 'American Samoa',
             'alpha2' => 'AS',
             'alpha3' => 'ASM',
             'numeric' => '016',
@@ -219,6 +216,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Andorra',
+            'short_name' => 'Andorra',
             'alpha2' => 'AD',
             'alpha3' => 'AND',
             'numeric' => '020',
@@ -228,6 +226,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Angola',
+            'short_name' => 'Angola',
             'alpha2' => 'AO',
             'alpha3' => 'AGO',
             'numeric' => '024',
@@ -237,6 +236,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Anguilla',
+            'short_name' => 'Anguilla',
             'alpha2' => 'AI',
             'alpha3' => 'AIA',
             'numeric' => '660',
@@ -246,6 +246,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Antarctica',
+            'short_name' => 'Antarctica',
             'alpha2' => 'AQ',
             'alpha3' => 'ATA',
             'numeric' => '010',
@@ -279,6 +280,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Antigua and Barbuda',
+            'short_name' => 'Antigua and Barbuda',
             'alpha2' => 'AG',
             'alpha3' => 'ATG',
             'numeric' => '028',
@@ -288,6 +290,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Argentina',
+            'short_name' => 'Argentina',
             'alpha2' => 'AR',
             'alpha3' => 'ARG',
             'numeric' => '032',
@@ -297,6 +300,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Armenia',
+            'short_name' => 'Armenia',
             'alpha2' => 'AM',
             'alpha3' => 'ARM',
             'numeric' => '051',
@@ -306,6 +310,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Aruba',
+            'short_name' => 'Aruba',
             'alpha2' => 'AW',
             'alpha3' => 'ABW',
             'numeric' => '533',
@@ -315,6 +320,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Australia',
+            'short_name' => 'Australia',
             'alpha2' => 'AU',
             'alpha3' => 'AUS',
             'numeric' => '036',
@@ -324,6 +330,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Austria',
+            'short_name' => 'Austria',
             'alpha2' => 'AT',
             'alpha3' => 'AUT',
             'numeric' => '040',
@@ -333,6 +340,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Azerbaijan',
+            'short_name' => 'Azerbaijan',
             'alpha2' => 'AZ',
             'alpha3' => 'AZE',
             'numeric' => '031',
@@ -342,6 +350,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bahamas',
+            'short_name' => 'Bahamas',
             'alpha2' => 'BS',
             'alpha3' => 'BHS',
             'numeric' => '044',
@@ -351,6 +360,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bahrain',
+            'short_name' => 'Bahrain',
             'alpha2' => 'BH',
             'alpha3' => 'BHR',
             'numeric' => '048',
@@ -360,6 +370,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bangladesh',
+            'short_name' => 'Bangladesh',
             'alpha2' => 'BD',
             'alpha3' => 'BGD',
             'numeric' => '050',
@@ -369,6 +380,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Barbados',
+            'short_name' => 'Barbados',
             'alpha2' => 'BB',
             'alpha3' => 'BRB',
             'numeric' => '052',
@@ -378,6 +390,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Belarus',
+            'short_name' => 'Belarus',
             'alpha2' => 'BY',
             'alpha3' => 'BLR',
             'numeric' => '112',
@@ -387,6 +400,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Belgium',
+            'short_name' => 'Belgium',
             'alpha2' => 'BE',
             'alpha3' => 'BEL',
             'numeric' => '056',
@@ -396,6 +410,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Belize',
+            'short_name' => 'Belize',
             'alpha2' => 'BZ',
             'alpha3' => 'BLZ',
             'numeric' => '084',
@@ -405,6 +420,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Benin',
+            'short_name' => 'Benin',
             'alpha2' => 'BJ',
             'alpha3' => 'BEN',
             'numeric' => '204',
@@ -414,6 +430,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bermuda',
+            'short_name' => 'Bermuda',
             'alpha2' => 'BM',
             'alpha3' => 'BMU',
             'numeric' => '060',
@@ -423,6 +440,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bhutan',
+            'short_name' => 'Bhutan',
             'alpha2' => 'BT',
             'alpha3' => 'BTN',
             'numeric' => '064',
@@ -432,6 +450,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bolivia (Plurinational State of)',
+            'short_name' => 'Bolivia',
             'alpha2' => 'BO',
             'alpha3' => 'BOL',
             'numeric' => '068',
@@ -441,6 +460,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bonaire, Sint Eustatius and Saba',
+            'short_name' => 'Bonaire',
             'alpha2' => 'BQ',
             'alpha3' => 'BES',
             'numeric' => '535',
@@ -450,6 +470,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bosnia and Herzegovina',
+            'short_name' => 'Bosnia and Herzegovina',
             'alpha2' => 'BA',
             'alpha3' => 'BIH',
             'numeric' => '070',
@@ -459,6 +480,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Botswana',
+            'short_name' => 'Botswana',
             'alpha2' => 'BW',
             'alpha3' => 'BWA',
             'numeric' => '072',
@@ -468,6 +490,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bouvet Island',
+            'short_name' => 'Bouvet Island',
             'alpha2' => 'BV',
             'alpha3' => 'BVT',
             'numeric' => '074',
@@ -477,6 +500,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Brazil',
+            'short_name' => 'Brazil',
             'alpha2' => 'BR',
             'alpha3' => 'BRA',
             'numeric' => '076',
@@ -486,6 +510,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'British Indian Ocean Territory',
+            'short_name' => 'British Indian Ocean Territory',
             'alpha2' => 'IO',
             'alpha3' => 'IOT',
             'numeric' => '086',
@@ -495,6 +520,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Brunei Darussalam',
+            'short_name' => 'Brunei Darussalam',
             'alpha2' => 'BN',
             'alpha3' => 'BRN',
             'numeric' => '096',
@@ -505,6 +531,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Bulgaria',
+            'short_name' => 'Bulgaria',
             'alpha2' => 'BG',
             'alpha3' => 'BGR',
             'numeric' => '100',
@@ -514,6 +541,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Burkina Faso',
+            'short_name' => 'Burkina Faso',
             'alpha2' => 'BF',
             'alpha3' => 'BFA',
             'numeric' => '854',
@@ -523,6 +551,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Burundi',
+            'short_name' => 'Burundi',
             'alpha2' => 'BI',
             'alpha3' => 'BDI',
             'numeric' => '108',
@@ -532,6 +561,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cabo Verde',
+            'short_name' => 'Cabo Verde',
             'alpha2' => 'CV',
             'alpha3' => 'CPV',
             'numeric' => '132',
@@ -541,6 +571,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cambodia',
+            'short_name' => 'Cambodia',
             'alpha2' => 'KH',
             'alpha3' => 'KHM',
             'numeric' => '116',
@@ -550,6 +581,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cameroon',
+            'short_name' => 'Cameroon',
             'alpha2' => 'CM',
             'alpha3' => 'CMR',
             'numeric' => '120',
@@ -559,6 +591,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Canada',
+            'short_name' => 'Canada',
             'alpha2' => 'CA',
             'alpha3' => 'CAN',
             'numeric' => '124',
@@ -568,6 +601,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cayman Islands',
+            'short_name' => 'Cayman Islands',
             'alpha2' => 'KY',
             'alpha3' => 'CYM',
             'numeric' => '136',
@@ -577,6 +611,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Central African Republic',
+            'short_name' => 'Central African Republic',
             'alpha2' => 'CF',
             'alpha3' => 'CAF',
             'numeric' => '140',
@@ -586,6 +621,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Chad',
+            'short_name' => 'Chad',
             'alpha2' => 'TD',
             'alpha3' => 'TCD',
             'numeric' => '148',
@@ -595,6 +631,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Chile',
+            'short_name' => 'Chile',
             'alpha2' => 'CL',
             'alpha3' => 'CHL',
             'numeric' => '152',
@@ -604,6 +641,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'China',
+            'short_name' => 'China',
             'alpha2' => 'CN',
             'alpha3' => 'CHN',
             'numeric' => '156',
@@ -613,6 +651,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Christmas Island',
+            'short_name' => 'Christmas Island',
             'alpha2' => 'CX',
             'alpha3' => 'CXR',
             'numeric' => '162',
@@ -622,6 +661,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cocos (Keeling) Islands',
+            'short_name' => 'Cocos (Keeling) Islands',
             'alpha2' => 'CC',
             'alpha3' => 'CCK',
             'numeric' => '166',
@@ -631,6 +671,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Colombia',
+            'short_name' => 'Colombia',
             'alpha2' => 'CO',
             'alpha3' => 'COL',
             'numeric' => '170',
@@ -640,6 +681,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Comoros',
+            'short_name' => 'Comoros',
             'alpha2' => 'KM',
             'alpha3' => 'COM',
             'numeric' => '174',
@@ -649,6 +691,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Congo',
+            'short_name' => 'Congo',
             'alpha2' => 'CG',
             'alpha3' => 'COG',
             'numeric' => '178',
@@ -658,6 +701,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Congo (Democratic Republic of the)',
+            'short_name' => 'Congo',
             'alpha2' => 'CD',
             'alpha3' => 'COD',
             'numeric' => '180',
@@ -667,6 +711,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cook Islands',
+            'short_name' => 'Cook Islands',
             'alpha2' => 'CK',
             'alpha3' => 'COK',
             'numeric' => '184',
@@ -676,6 +721,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Costa Rica',
+            'short_name' => 'Costa Rica',
             'alpha2' => 'CR',
             'alpha3' => 'CRI',
             'numeric' => '188',
@@ -685,6 +731,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Côte d\'Ivoire',
+            'short_name' => 'Côte d\'Ivoire',
             'alpha2' => 'CI',
             'alpha3' => 'CIV',
             'numeric' => '384',
@@ -694,6 +741,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Croatia',
+            'short_name' => 'Croatia',
             'alpha2' => 'HR',
             'alpha3' => 'HRV',
             'numeric' => '191',
@@ -703,6 +751,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cuba',
+            'short_name' => 'Cuba',
             'alpha2' => 'CU',
             'alpha3' => 'CUB',
             'numeric' => '192',
@@ -713,6 +762,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Curaçao',
+            'short_name' => 'Curaçao',
             'alpha2' => 'CW',
             'alpha3' => 'CUW',
             'numeric' => '531',
@@ -722,6 +772,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Cyprus',
+            'short_name' => 'Cyprus',
             'alpha2' => 'CY',
             'alpha3' => 'CYP',
             'numeric' => '196',
@@ -731,6 +782,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Czechia',
+            'short_name' => 'Czechia',
             'alpha2' => 'CZ',
             'alpha3' => 'CZE',
             'numeric' => '203',
@@ -740,6 +792,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Denmark',
+            'short_name' => 'Denmark',
             'alpha2' => 'DK',
             'alpha3' => 'DNK',
             'numeric' => '208',
@@ -749,6 +802,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Djibouti',
+            'short_name' => 'Djibouti',
             'alpha2' => 'DJ',
             'alpha3' => 'DJI',
             'numeric' => '262',
@@ -758,6 +812,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Dominica',
+            'short_name' => 'Dominica',
             'alpha2' => 'DM',
             'alpha3' => 'DMA',
             'numeric' => '212',
@@ -767,6 +822,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Dominican Republic',
+            'short_name' => 'Dominican Republic',
             'alpha2' => 'DO',
             'alpha3' => 'DOM',
             'numeric' => '214',
@@ -776,6 +832,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Ecuador',
+            'short_name' => 'Ecuador',
             'alpha2' => 'EC',
             'alpha3' => 'ECU',
             'numeric' => '218',
@@ -785,6 +842,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Egypt',
+            'short_name' => 'Egypt',
             'alpha2' => 'EG',
             'alpha3' => 'EGY',
             'numeric' => '818',
@@ -794,6 +852,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'El Salvador',
+            'short_name' => 'El Salvador',
             'alpha2' => 'SV',
             'alpha3' => 'SLV',
             'numeric' => '222',
@@ -803,6 +862,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Equatorial Guinea',
+            'short_name' => 'Equatorial Guinea',
             'alpha2' => 'GQ',
             'alpha3' => 'GNQ',
             'numeric' => '226',
@@ -812,6 +872,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Eritrea',
+            'short_name' => 'Eritrea',
             'alpha2' => 'ER',
             'alpha3' => 'ERI',
             'numeric' => '232',
@@ -821,6 +882,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Estonia',
+            'short_name' => 'Estonia',
             'alpha2' => 'EE',
             'alpha3' => 'EST',
             'numeric' => '233',
@@ -830,6 +892,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Ethiopia',
+            'short_name' => 'Ethiopia',
             'alpha2' => 'ET',
             'alpha3' => 'ETH',
             'numeric' => '231',
@@ -839,6 +902,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Falkland Islands (Malvinas)',
+            'short_name' => 'Falkland Islands',
             'alpha2' => 'FK',
             'alpha3' => 'FLK',
             'numeric' => '238',
@@ -848,6 +912,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Faroe Islands',
+            'short_name' => 'Faroe Islands',
             'alpha2' => 'FO',
             'alpha3' => 'FRO',
             'numeric' => '234',
@@ -857,6 +922,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Fiji',
+            'short_name' => 'Fiji',
             'alpha2' => 'FJ',
             'alpha3' => 'FJI',
             'numeric' => '242',
@@ -866,6 +932,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Finland',
+            'short_name' => 'Finland',
             'alpha2' => 'FI',
             'alpha3' => 'FIN',
             'numeric' => '246',
@@ -875,6 +942,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'France',
+            'short_name' => 'France',
             'alpha2' => 'FR',
             'alpha3' => 'FRA',
             'numeric' => '250',
@@ -884,6 +952,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'French Guiana',
+            'short_name' => 'French Guiana',
             'alpha2' => 'GF',
             'alpha3' => 'GUF',
             'numeric' => '254',
@@ -893,6 +962,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'French Polynesia',
+            'short_name' => 'French Polynesia',
             'alpha2' => 'PF',
             'alpha3' => 'PYF',
             'numeric' => '258',
@@ -902,6 +972,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'French Southern Territories',
+            'short_name' => 'French Southern Territories',
             'alpha2' => 'TF',
             'alpha3' => 'ATF',
             'numeric' => '260',
@@ -911,6 +982,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Gabon',
+            'short_name' => 'Gabon',
             'alpha2' => 'GA',
             'alpha3' => 'GAB',
             'numeric' => '266',
@@ -920,6 +992,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Gambia',
+            'short_name' => 'Gambia',
             'alpha2' => 'GM',
             'alpha3' => 'GMB',
             'numeric' => '270',
@@ -929,6 +1002,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Georgia',
+            'short_name' => 'Georgia',
             'alpha2' => 'GE',
             'alpha3' => 'GEO',
             'numeric' => '268',
@@ -938,6 +1012,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Germany',
+            'short_name' => 'Germany',
             'alpha2' => 'DE',
             'alpha3' => 'DEU',
             'numeric' => '276',
@@ -947,6 +1022,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Ghana',
+            'short_name' => 'Ghana',
             'alpha2' => 'GH',
             'alpha3' => 'GHA',
             'numeric' => '288',
@@ -956,6 +1032,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Gibraltar',
+            'short_name' => 'Gibraltar',
             'alpha2' => 'GI',
             'alpha3' => 'GIB',
             'numeric' => '292',
@@ -965,6 +1042,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Greece',
+            'short_name' => 'Greece',
             'alpha2' => 'GR',
             'alpha3' => 'GRC',
             'numeric' => '300',
@@ -974,6 +1052,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Greenland',
+            'short_name' => 'Greenland',
             'alpha2' => 'GL',
             'alpha3' => 'GRL',
             'numeric' => '304',
@@ -983,6 +1062,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Grenada',
+            'short_name' => 'Grenada',
             'alpha2' => 'GD',
             'alpha3' => 'GRD',
             'numeric' => '308',
@@ -992,6 +1072,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Guadeloupe',
+            'short_name' => 'Guadeloupe',
             'alpha2' => 'GP',
             'alpha3' => 'GLP',
             'numeric' => '312',
@@ -1001,6 +1082,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Guam',
+            'short_name' => 'Guam',
             'alpha2' => 'GU',
             'alpha3' => 'GUM',
             'numeric' => '316',
@@ -1010,6 +1092,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Guatemala',
+            'short_name' => 'Guatemala',
             'alpha2' => 'GT',
             'alpha3' => 'GTM',
             'numeric' => '320',
@@ -1019,6 +1102,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Guernsey',
+            'short_name' => 'Guernsey',
             'alpha2' => 'GG',
             'alpha3' => 'GGY',
             'numeric' => '831',
@@ -1028,6 +1112,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Guinea',
+            'short_name' => 'Guinea',
             'alpha2' => 'GN',
             'alpha3' => 'GIN',
             'numeric' => '324',
@@ -1037,6 +1122,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Guinea-Bissau',
+            'short_name' => 'Guinea-Bissau',
             'alpha2' => 'GW',
             'alpha3' => 'GNB',
             'numeric' => '624',
@@ -1046,6 +1132,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Guyana',
+            'short_name' => 'Guyana',
             'alpha2' => 'GY',
             'alpha3' => 'GUY',
             'numeric' => '328',
@@ -1055,6 +1142,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Haiti',
+            'short_name' => 'Haiti',
             'alpha2' => 'HT',
             'alpha3' => 'HTI',
             'numeric' => '332',
@@ -1064,6 +1152,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Heard Island and McDonald Islands',
+            'short_name' => 'Heard Island and McDonald Islands',
             'alpha2' => 'HM',
             'alpha3' => 'HMD',
             'numeric' => '334',
@@ -1073,6 +1162,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Holy See',
+            'short_name' => 'Holy See',
             'alpha2' => 'VA',
             'alpha3' => 'VAT',
             'numeric' => '336',
@@ -1082,6 +1172,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Honduras',
+            'short_name' => 'Honduras',
             'alpha2' => 'HN',
             'alpha3' => 'HND',
             'numeric' => '340',
@@ -1091,6 +1182,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Hong Kong',
+            'short_name' => 'Hong Kong',
             'alpha2' => 'HK',
             'alpha3' => 'HKG',
             'numeric' => '344',
@@ -1100,6 +1192,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Hungary',
+            'short_name' => 'Hungary',
             'alpha2' => 'HU',
             'alpha3' => 'HUN',
             'numeric' => '348',
@@ -1109,6 +1202,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Iceland',
+            'short_name' => 'Iceland',
             'alpha2' => 'IS',
             'alpha3' => 'ISL',
             'numeric' => '352',
@@ -1118,6 +1212,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'India',
+            'short_name' => 'India',
             'alpha2' => 'IN',
             'alpha3' => 'IND',
             'numeric' => '356',
@@ -1127,6 +1222,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Indonesia',
+            'short_name' => 'Indonesia',
             'alpha2' => 'ID',
             'alpha3' => 'IDN',
             'numeric' => '360',
@@ -1136,6 +1232,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Iran (Islamic Republic of)',
+            'short_name' => 'Iran',
             'alpha2' => 'IR',
             'alpha3' => 'IRN',
             'numeric' => '364',
@@ -1145,6 +1242,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Iraq',
+            'short_name' => 'Iraq',
             'alpha2' => 'IQ',
             'alpha3' => 'IRQ',
             'numeric' => '368',
@@ -1154,6 +1252,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Ireland',
+            'short_name' => 'Ireland',
             'alpha2' => 'IE',
             'alpha3' => 'IRL',
             'numeric' => '372',
@@ -1163,6 +1262,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Isle of Man',
+            'short_name' => 'Isle of Man',
             'alpha2' => 'IM',
             'alpha3' => 'IMN',
             'numeric' => '833',
@@ -1172,6 +1272,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Israel',
+            'short_name' => 'Israel',
             'alpha2' => 'IL',
             'alpha3' => 'ISR',
             'numeric' => '376',
@@ -1181,6 +1282,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Italy',
+            'short_name' => 'Italy',
             'alpha2' => 'IT',
             'alpha3' => 'ITA',
             'numeric' => '380',
@@ -1190,6 +1292,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Jamaica',
+            'short_name' => 'Jamaica',
             'alpha2' => 'JM',
             'alpha3' => 'JAM',
             'numeric' => '388',
@@ -1199,6 +1302,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Japan',
+            'short_name' => 'Japan',
             'alpha2' => 'JP',
             'alpha3' => 'JPN',
             'numeric' => '392',
@@ -1208,6 +1312,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Jersey',
+            'short_name' => 'Jersey',
             'alpha2' => 'JE',
             'alpha3' => 'JEY',
             'numeric' => '832',
@@ -1217,6 +1322,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Jordan',
+            'short_name' => 'Jordan',
             'alpha2' => 'JO',
             'alpha3' => 'JOR',
             'numeric' => '400',
@@ -1226,6 +1332,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Kazakhstan',
+            'short_name' => 'Kazakhstan',
             'alpha2' => 'KZ',
             'alpha3' => 'KAZ',
             'numeric' => '398',
@@ -1235,6 +1342,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Kenya',
+            'short_name' => 'Kenya',
             'alpha2' => 'KE',
             'alpha3' => 'KEN',
             'numeric' => '404',
@@ -1244,6 +1352,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Kiribati',
+            'short_name' => 'Kiribati',
             'alpha2' => 'KI',
             'alpha3' => 'KIR',
             'numeric' => '296',
@@ -1253,6 +1362,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Korea (Democratic People\'s Republic of)',
+            'short_name' => 'North Korea',
             'alpha2' => 'KP',
             'alpha3' => 'PRK',
             'numeric' => '408',
@@ -1262,6 +1372,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Korea (Republic of)',
+            'short_name' => 'South Korea',
             'alpha2' => 'KR',
             'alpha3' => 'KOR',
             'numeric' => '410',
@@ -1271,6 +1382,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Kuwait',
+            'short_name' => 'Kuwait',
             'alpha2' => 'KW',
             'alpha3' => 'KWT',
             'numeric' => '414',
@@ -1280,6 +1392,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Kyrgyzstan',
+            'short_name' => 'Kyrgyzstan',
             'alpha2' => 'KG',
             'alpha3' => 'KGZ',
             'numeric' => '417',
@@ -1289,6 +1402,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Lao People\'s Democratic Republic',
+            'short_name' => 'Lao People\'s Democratic Republic',
             'alpha2' => 'LA',
             'alpha3' => 'LAO',
             'numeric' => '418',
@@ -1298,6 +1412,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Latvia',
+            'short_name' => 'Latvia',
             'alpha2' => 'LV',
             'alpha3' => 'LVA',
             'numeric' => '428',
@@ -1307,6 +1422,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Lebanon',
+            'short_name' => 'Lebanon',
             'alpha2' => 'LB',
             'alpha3' => 'LBN',
             'numeric' => '422',
@@ -1316,6 +1432,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Lesotho',
+            'short_name' => 'Lesotho',
             'alpha2' => 'LS',
             'alpha3' => 'LSO',
             'numeric' => '426',
@@ -1326,6 +1443,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Liberia',
+            'short_name' => 'Liberia',
             'alpha2' => 'LR',
             'alpha3' => 'LBR',
             'numeric' => '430',
@@ -1335,6 +1453,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Libya',
+            'short_name' => 'Libya',
             'alpha2' => 'LY',
             'alpha3' => 'LBY',
             'numeric' => '434',
@@ -1344,6 +1463,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Liechtenstein',
+            'short_name' => 'Liechtenstein',
             'alpha2' => 'LI',
             'alpha3' => 'LIE',
             'numeric' => '438',
@@ -1353,6 +1473,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Lithuania',
+            'short_name' => 'Lithuania',
             'alpha2' => 'LT',
             'alpha3' => 'LTU',
             'numeric' => '440',
@@ -1362,6 +1483,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Luxembourg',
+            'short_name' => 'Luxembourg',
             'alpha2' => 'LU',
             'alpha3' => 'LUX',
             'numeric' => '442',
@@ -1371,6 +1493,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Macao',
+            'short_name' => 'Macao',
             'alpha2' => 'MO',
             'alpha3' => 'MAC',
             'numeric' => '446',
@@ -1380,6 +1503,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Macedonia (the former Yugoslav Republic of)',
+            'short_name' => 'Macedonia',
             'alpha2' => 'MK',
             'alpha3' => 'MKD',
             'numeric' => '807',
@@ -1389,6 +1513,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Madagascar',
+            'short_name' => 'Madagascar',
             'alpha2' => 'MG',
             'alpha3' => 'MDG',
             'numeric' => '450',
@@ -1398,6 +1523,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Malawi',
+            'short_name' => 'Malawi',
             'alpha2' => 'MW',
             'alpha3' => 'MWI',
             'numeric' => '454',
@@ -1407,6 +1533,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Malaysia',
+            'short_name' => 'Malaysia',
             'alpha2' => 'MY',
             'alpha3' => 'MYS',
             'numeric' => '458',
@@ -1416,6 +1543,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Maldives',
+            'short_name' => 'Maldives',
             'alpha2' => 'MV',
             'alpha3' => 'MDV',
             'numeric' => '462',
@@ -1425,6 +1553,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Mali',
+            'short_name' => 'Mali',
             'alpha2' => 'ML',
             'alpha3' => 'MLI',
             'numeric' => '466',
@@ -1434,6 +1563,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Malta',
+            'short_name' => 'Malta',
             'alpha2' => 'MT',
             'alpha3' => 'MLT',
             'numeric' => '470',
@@ -1443,6 +1573,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Marshall Islands',
+            'short_name' => 'Marshall Islands',
             'alpha2' => 'MH',
             'alpha3' => 'MHL',
             'numeric' => '584',
@@ -1452,6 +1583,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Martinique',
+            'short_name' => 'Martinique',
             'alpha2' => 'MQ',
             'alpha3' => 'MTQ',
             'numeric' => '474',
@@ -1461,6 +1593,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Mauritania',
+            'short_name' => 'Mauritania',
             'alpha2' => 'MR',
             'alpha3' => 'MRT',
             'numeric' => '478',
@@ -1470,6 +1603,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Mauritius',
+            'short_name' => 'Mauritius',
             'alpha2' => 'MU',
             'alpha3' => 'MUS',
             'numeric' => '480',
@@ -1479,6 +1613,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Mayotte',
+            'short_name' => 'Mayotte',
             'alpha2' => 'YT',
             'alpha3' => 'MYT',
             'numeric' => '175',
@@ -1488,6 +1623,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Mexico',
+            'short_name' => 'Mexico',
             'alpha2' => 'MX',
             'alpha3' => 'MEX',
             'numeric' => '484',
@@ -1497,6 +1633,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Micronesia (Federated States of)',
+            'short_name' => 'Micronesia',
             'alpha2' => 'FM',
             'alpha3' => 'FSM',
             'numeric' => '583',
@@ -1506,6 +1643,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Moldova (Republic of)',
+            'short_name' => 'Moldova',
             'alpha2' => 'MD',
             'alpha3' => 'MDA',
             'numeric' => '498',
@@ -1515,6 +1653,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Monaco',
+            'short_name' => 'Monaco',
             'alpha2' => 'MC',
             'alpha3' => 'MCO',
             'numeric' => '492',
@@ -1524,6 +1663,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Mongolia',
+            'short_name' => 'Mongolia',
             'alpha2' => 'MN',
             'alpha3' => 'MNG',
             'numeric' => '496',
@@ -1533,6 +1673,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Montenegro',
+            'short_name' => 'Montenegro',
             'alpha2' => 'ME',
             'alpha3' => 'MNE',
             'numeric' => '499',
@@ -1542,6 +1683,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Montserrat',
+            'short_name' => 'Montserrat',
             'alpha2' => 'MS',
             'alpha3' => 'MSR',
             'numeric' => '500',
@@ -1551,6 +1693,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Morocco',
+            'short_name' => 'Morocco',
             'alpha2' => 'MA',
             'alpha3' => 'MAR',
             'numeric' => '504',
@@ -1560,6 +1703,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Mozambique',
+            'short_name' => 'Mozambique',
             'alpha2' => 'MZ',
             'alpha3' => 'MOZ',
             'numeric' => '508',
@@ -1569,6 +1713,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Myanmar',
+            'short_name' => 'Myanmar',
             'alpha2' => 'MM',
             'alpha3' => 'MMR',
             'numeric' => '104',
@@ -1578,6 +1723,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Namibia',
+            'short_name' => 'Namibia',
             'alpha2' => 'NA',
             'alpha3' => 'NAM',
             'numeric' => '516',
@@ -1588,6 +1734,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Nauru',
+            'short_name' => 'Nauru',
             'alpha2' => 'NR',
             'alpha3' => 'NRU',
             'numeric' => '520',
@@ -1597,6 +1744,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Nepal',
+            'short_name' => 'Nepal',
             'alpha2' => 'NP',
             'alpha3' => 'NPL',
             'numeric' => '524',
@@ -1606,6 +1754,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Netherlands',
+            'short_name' => 'Netherlands',
             'alpha2' => 'NL',
             'alpha3' => 'NLD',
             'numeric' => '528',
@@ -1615,6 +1764,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'New Caledonia',
+            'short_name' => 'New Caledonia',
             'alpha2' => 'NC',
             'alpha3' => 'NCL',
             'numeric' => '540',
@@ -1624,6 +1774,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'New Zealand',
+            'short_name' => 'New Zealand',
             'alpha2' => 'NZ',
             'alpha3' => 'NZL',
             'numeric' => '554',
@@ -1633,6 +1784,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Nicaragua',
+            'short_name' => 'Nicaragua',
             'alpha2' => 'NI',
             'alpha3' => 'NIC',
             'numeric' => '558',
@@ -1642,6 +1794,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Niger',
+            'short_name' => 'Niger',
             'alpha2' => 'NE',
             'alpha3' => 'NER',
             'numeric' => '562',
@@ -1651,6 +1804,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Nigeria',
+            'short_name' => 'Nigeria',
             'alpha2' => 'NG',
             'alpha3' => 'NGA',
             'numeric' => '566',
@@ -1660,6 +1814,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Niue',
+            'short_name' => 'Niue',
             'alpha2' => 'NU',
             'alpha3' => 'NIU',
             'numeric' => '570',
@@ -1669,6 +1824,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Norfolk Island',
+            'short_name' => 'Norfolk Island',
             'alpha2' => 'NF',
             'alpha3' => 'NFK',
             'numeric' => '574',
@@ -1678,6 +1834,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Northern Mariana Islands',
+            'short_name' => 'Northern Mariana Islands',
             'alpha2' => 'MP',
             'alpha3' => 'MNP',
             'numeric' => '580',
@@ -1687,6 +1844,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Norway',
+            'short_name' => 'Norway',
             'alpha2' => 'NO',
             'alpha3' => 'NOR',
             'numeric' => '578',
@@ -1696,6 +1854,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Oman',
+            'short_name' => 'Oman',
             'alpha2' => 'OM',
             'alpha3' => 'OMN',
             'numeric' => '512',
@@ -1705,6 +1864,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Pakistan',
+            'short_name' => 'Pakistan',
             'alpha2' => 'PK',
             'alpha3' => 'PAK',
             'numeric' => '586',
@@ -1714,6 +1874,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Palau',
+            'short_name' => 'Palau',
             'alpha2' => 'PW',
             'alpha3' => 'PLW',
             'numeric' => '585',
@@ -1723,6 +1884,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Palestine, State of',
+            'short_name' => 'Palestine',
             'alpha2' => 'PS',
             'alpha3' => 'PSE',
             'numeric' => '275',
@@ -1732,6 +1894,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Panama',
+            'short_name' => 'Panama',
             'alpha2' => 'PA',
             'alpha3' => 'PAN',
             'numeric' => '591',
@@ -1741,6 +1904,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Papua New Guinea',
+            'short_name' => 'Papua New Guinea',
             'alpha2' => 'PG',
             'alpha3' => 'PNG',
             'numeric' => '598',
@@ -1750,6 +1914,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Paraguay',
+            'short_name' => 'Paraguay',
             'alpha2' => 'PY',
             'alpha3' => 'PRY',
             'numeric' => '600',
@@ -1759,6 +1924,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Peru',
+            'short_name' => 'Peru',
             'alpha2' => 'PE',
             'alpha3' => 'PER',
             'numeric' => '604',
@@ -1768,6 +1934,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Philippines',
+            'short_name' => 'Philippines',
             'alpha2' => 'PH',
             'alpha3' => 'PHL',
             'numeric' => '608',
@@ -1777,6 +1944,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Pitcairn',
+            'short_name' => 'Pitcairn',
             'alpha2' => 'PN',
             'alpha3' => 'PCN',
             'numeric' => '612',
@@ -1786,6 +1954,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Poland',
+            'short_name' => 'Poland',
             'alpha2' => 'PL',
             'alpha3' => 'POL',
             'numeric' => '616',
@@ -1795,6 +1964,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Portugal',
+            'short_name' => 'Portugal',
             'alpha2' => 'PT',
             'alpha3' => 'PRT',
             'numeric' => '620',
@@ -1804,6 +1974,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Puerto Rico',
+            'short_name' => 'Puerto Rico',
             'alpha2' => 'PR',
             'alpha3' => 'PRI',
             'numeric' => '630',
@@ -1813,6 +1984,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Qatar',
+            'short_name' => 'Qatar',
             'alpha2' => 'QA',
             'alpha3' => 'QAT',
             'numeric' => '634',
@@ -1822,6 +1994,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Réunion',
+            'short_name' => 'Réunion',
             'alpha2' => 'RE',
             'alpha3' => 'REU',
             'numeric' => '638',
@@ -1831,6 +2004,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Romania',
+            'short_name' => 'Romania',
             'alpha2' => 'RO',
             'alpha3' => 'ROU',
             'numeric' => '642',
@@ -1840,6 +2014,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Russian Federation',
+            'short_name' => 'Russian Federation',
             'alpha2' => 'RU',
             'alpha3' => 'RUS',
             'numeric' => '643',
@@ -1849,6 +2024,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Rwanda',
+            'short_name' => 'Rwanda',
             'alpha2' => 'RW',
             'alpha3' => 'RWA',
             'numeric' => '646',
@@ -1858,6 +2034,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saint Barthélemy',
+            'short_name' => 'Saint Barthélemy',
             'alpha2' => 'BL',
             'alpha3' => 'BLM',
             'numeric' => '652',
@@ -1867,6 +2044,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saint Helena, Ascension and Tristan da Cunha',
+            'short_name' => 'Saint Helena',
             'alpha2' => 'SH',
             'alpha3' => 'SHN',
             'numeric' => '654',
@@ -1876,6 +2054,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saint Kitts and Nevis',
+            'short_name' => 'Saint Kitts and Nevis',
             'alpha2' => 'KN',
             'alpha3' => 'KNA',
             'numeric' => '659',
@@ -1885,6 +2064,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saint Lucia',
+            'short_name' => 'Saint Lucia',
             'alpha2' => 'LC',
             'alpha3' => 'LCA',
             'numeric' => '662',
@@ -1894,6 +2074,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saint Martin (French part)',
+            'short_name' => 'Saint Martin',
             'alpha2' => 'MF',
             'alpha3' => 'MAF',
             'numeric' => '663',
@@ -1904,6 +2085,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saint Pierre and Miquelon',
+            'short_name' => 'Saint Pierre and Miquelon',
             'alpha2' => 'PM',
             'alpha3' => 'SPM',
             'numeric' => '666',
@@ -1913,6 +2095,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saint Vincent and the Grenadines',
+            'short_name' => 'Saint Vincent and the Grenadines',
             'alpha2' => 'VC',
             'alpha3' => 'VCT',
             'numeric' => '670',
@@ -1922,6 +2105,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Samoa',
+            'short_name' => 'Samoa',
             'alpha2' => 'WS',
             'alpha3' => 'WSM',
             'numeric' => '882',
@@ -1931,6 +2115,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'San Marino',
+            'short_name' => 'San Marino',
             'alpha2' => 'SM',
             'alpha3' => 'SMR',
             'numeric' => '674',
@@ -1940,6 +2125,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Sao Tome and Principe',
+            'short_name' => 'Sao Tome and Principe',
             'alpha2' => 'ST',
             'alpha3' => 'STP',
             'numeric' => '678',
@@ -1949,6 +2135,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Saudi Arabia',
+            'short_name' => 'Saudi Arabia',
             'alpha2' => 'SA',
             'alpha3' => 'SAU',
             'numeric' => '682',
@@ -1958,6 +2145,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Senegal',
+            'short_name' => 'Senegal',
             'alpha2' => 'SN',
             'alpha3' => 'SEN',
             'numeric' => '686',
@@ -1967,6 +2155,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Serbia',
+            'short_name' => 'Serbia',
             'alpha2' => 'RS',
             'alpha3' => 'SRB',
             'numeric' => '688',
@@ -1976,6 +2165,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Seychelles',
+            'short_name' => 'Seychelles',
             'alpha2' => 'SC',
             'alpha3' => 'SYC',
             'numeric' => '690',
@@ -1985,6 +2175,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Sierra Leone',
+            'short_name' => 'Sierra Leone',
             'alpha2' => 'SL',
             'alpha3' => 'SLE',
             'numeric' => '694',
@@ -1994,6 +2185,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Singapore',
+            'short_name' => 'Singapore',
             'alpha2' => 'SG',
             'alpha3' => 'SGP',
             'numeric' => '702',
@@ -2003,6 +2195,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Sint Maarten (Dutch part)',
+            'short_name' => 'Sint Maarten',
             'alpha2' => 'SX',
             'alpha3' => 'SXM',
             'numeric' => '534',
@@ -2012,6 +2205,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Slovakia',
+            'short_name' => 'Slovakia',
             'alpha2' => 'SK',
             'alpha3' => 'SVK',
             'numeric' => '703',
@@ -2021,6 +2215,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Slovenia',
+            'short_name' => 'Slovenia',
             'alpha2' => 'SI',
             'alpha3' => 'SVN',
             'numeric' => '705',
@@ -2030,6 +2225,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Solomon Islands',
+            'short_name' => 'Solomon Islands',
             'alpha2' => 'SB',
             'alpha3' => 'SLB',
             'numeric' => '090',
@@ -2039,6 +2235,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Somalia',
+            'short_name' => 'Somalia',
             'alpha2' => 'SO',
             'alpha3' => 'SOM',
             'numeric' => '706',
@@ -2048,6 +2245,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'South Africa',
+            'short_name' => 'South Africa',
             'alpha2' => 'ZA',
             'alpha3' => 'ZAF',
             'numeric' => '710',
@@ -2057,6 +2255,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'South Georgia and the South Sandwich Islands',
+            'short_name' => 'South Georgia',
             'alpha2' => 'GS',
             'alpha3' => 'SGS',
             'numeric' => '239',
@@ -2066,6 +2265,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'South Sudan',
+            'short_name' => 'South Sudan',
             'alpha2' => 'SS',
             'alpha3' => 'SSD',
             'numeric' => '728',
@@ -2075,6 +2275,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Spain',
+            'short_name' => 'Spain',
             'alpha2' => 'ES',
             'alpha3' => 'ESP',
             'numeric' => '724',
@@ -2084,6 +2285,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Sri Lanka',
+            'short_name' => 'Sri Lanka',
             'alpha2' => 'LK',
             'alpha3' => 'LKA',
             'numeric' => '144',
@@ -2093,6 +2295,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Sudan',
+            'short_name' => 'Sudan',
             'alpha2' => 'SD',
             'alpha3' => 'SDN',
             'numeric' => '729',
@@ -2102,6 +2305,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Suriname',
+            'short_name' => 'Suriname',
             'alpha2' => 'SR',
             'alpha3' => 'SUR',
             'numeric' => '740',
@@ -2111,6 +2315,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Svalbard and Jan Mayen',
+            'short_name' => 'Svalbard and Jan Mayen',
             'alpha2' => 'SJ',
             'alpha3' => 'SJM',
             'numeric' => '744',
@@ -2120,6 +2325,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Swaziland',
+            'short_name' => 'Swaziland',
             'alpha2' => 'SZ',
             'alpha3' => 'SWZ',
             'numeric' => '748',
@@ -2130,6 +2336,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Sweden',
+            'short_name' => 'Sweden',
             'alpha2' => 'SE',
             'alpha3' => 'SWE',
             'numeric' => '752',
@@ -2139,6 +2346,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Switzerland',
+            'short_name' => 'Switzerland',
             'alpha2' => 'CH',
             'alpha3' => 'CHE',
             'numeric' => '756',
@@ -2148,6 +2356,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Syrian Arab Republic',
+            'short_name' => 'Syrian Arab Republic',
             'alpha2' => 'SY',
             'alpha3' => 'SYR',
             'numeric' => '760',
@@ -2157,6 +2366,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Taiwan (Province of China)',
+            'short_name' => 'Taiwan',
             'alpha2' => 'TW',
             'alpha3' => 'TWN',
             'numeric' => '158',
@@ -2166,6 +2376,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Tajikistan',
+            'short_name' => 'Tajikistan',
             'alpha2' => 'TJ',
             'alpha3' => 'TJK',
             'numeric' => '762',
@@ -2175,6 +2386,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Tanzania, United Republic of',
+            'short_name' => 'Tanzania',
             'alpha2' => 'TZ',
             'alpha3' => 'TZA',
             'numeric' => '834',
@@ -2184,6 +2396,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Thailand',
+            'short_name' => 'Thailand',
             'alpha2' => 'TH',
             'alpha3' => 'THA',
             'numeric' => '764',
@@ -2193,6 +2406,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Timor-Leste',
+            'short_name' => 'Timor-Leste',
             'alpha2' => 'TL',
             'alpha3' => 'TLS',
             'numeric' => '626',
@@ -2202,6 +2416,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Togo',
+            'short_name' => 'Togo',
             'alpha2' => 'TG',
             'alpha3' => 'TGO',
             'numeric' => '768',
@@ -2211,6 +2426,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Tokelau',
+            'short_name' => 'Tokelau',
             'alpha2' => 'TK',
             'alpha3' => 'TKL',
             'numeric' => '772',
@@ -2220,6 +2436,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Tonga',
+            'short_name' => 'Tonga',
             'alpha2' => 'TO',
             'alpha3' => 'TON',
             'numeric' => '776',
@@ -2229,6 +2446,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Trinidad and Tobago',
+            'short_name' => 'Trinidad and Tobago',
             'alpha2' => 'TT',
             'alpha3' => 'TTO',
             'numeric' => '780',
@@ -2238,6 +2456,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Tunisia',
+            'short_name' => 'Tunisia',
             'alpha2' => 'TN',
             'alpha3' => 'TUN',
             'numeric' => '788',
@@ -2247,6 +2466,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Turkey',
+            'short_name' => 'Turkey',
             'alpha2' => 'TR',
             'alpha3' => 'TUR',
             'numeric' => '792',
@@ -2256,6 +2476,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Turkmenistan',
+            'short_name' => 'Turkmenistan',
             'alpha2' => 'TM',
             'alpha3' => 'TKM',
             'numeric' => '795',
@@ -2265,6 +2486,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Turks and Caicos Islands',
+            'short_name' => 'Turks and Caicos Islands',
             'alpha2' => 'TC',
             'alpha3' => 'TCA',
             'numeric' => '796',
@@ -2274,6 +2496,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Tuvalu',
+            'short_name' => 'Tuvalu',
             'alpha2' => 'TV',
             'alpha3' => 'TUV',
             'numeric' => '798',
@@ -2283,6 +2506,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Uganda',
+            'short_name' => 'Uganda',
             'alpha2' => 'UG',
             'alpha3' => 'UGA',
             'numeric' => '800',
@@ -2292,6 +2516,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Ukraine',
+            'short_name' => 'Ukraine',
             'alpha2' => 'UA',
             'alpha3' => 'UKR',
             'numeric' => '804',
@@ -2301,6 +2526,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'United Arab Emirates',
+            'short_name' => 'United Arab Emirates',
             'alpha2' => 'AE',
             'alpha3' => 'ARE',
             'numeric' => '784',
@@ -2310,6 +2536,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'United Kingdom of Great Britain and Northern Ireland',
+            'short_name' => 'United Kingdom',
             'alpha2' => 'GB',
             'alpha3' => 'GBR',
             'numeric' => '826',
@@ -2319,6 +2546,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'United States of America',
+            'short_name' => 'United States',
             'alpha2' => 'US',
             'alpha3' => 'USA',
             'numeric' => '840',
@@ -2328,6 +2556,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'United States Minor Outlying Islands',
+            'short_name' => 'United States Minor Islands',
             'alpha2' => 'UM',
             'alpha3' => 'UMI',
             'numeric' => '581',
@@ -2337,6 +2566,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Uruguay',
+            'short_name' => 'Uruguay',
             'alpha2' => 'UY',
             'alpha3' => 'URY',
             'numeric' => '858',
@@ -2346,6 +2576,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Uzbekistan',
+            'short_name' => 'Uzbekistan',
             'alpha2' => 'UZ',
             'alpha3' => 'UZB',
             'numeric' => '860',
@@ -2355,6 +2586,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Vanuatu',
+            'short_name' => 'Vanuatu',
             'alpha2' => 'VU',
             'alpha3' => 'VUT',
             'numeric' => '548',
@@ -2364,6 +2596,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Venezuela (Bolivarian Republic of)',
+            'short_name' => 'Venezuela',
             'alpha2' => 'VE',
             'alpha3' => 'VEN',
             'numeric' => '862',
@@ -2373,6 +2606,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Viet Nam',
+            'short_name' => 'Viet Nam',
             'alpha2' => 'VN',
             'alpha3' => 'VNM',
             'numeric' => '704',
@@ -2382,6 +2616,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Virgin Islands (British)',
+            'short_name' => 'Virgin Islands (British)',
             'alpha2' => 'VG',
             'alpha3' => 'VGB',
             'numeric' => '092',
@@ -2391,6 +2626,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Virgin Islands (U.S.)',
+            'short_name' => 'Virgin Islands (U.S.)',
             'alpha2' => 'VI',
             'alpha3' => 'VIR',
             'numeric' => '850',
@@ -2400,6 +2636,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Wallis and Futuna',
+            'short_name' => 'Wallis and Futuna',
             'alpha2' => 'WF',
             'alpha3' => 'WLF',
             'numeric' => '876',
@@ -2409,6 +2646,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Western Sahara',
+            'short_name' => 'Western Sahara',
             'alpha2' => 'EH',
             'alpha3' => 'ESH',
             'numeric' => '732',
@@ -2418,6 +2656,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Yemen',
+            'short_name' => 'Yemen',
             'alpha2' => 'YE',
             'alpha3' => 'YEM',
             'numeric' => '887',
@@ -2427,6 +2666,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Zambia',
+            'short_name' => 'Zambia',
             'alpha2' => 'ZM',
             'alpha3' => 'ZMB',
             'numeric' => '894',
@@ -2436,6 +2676,7 @@ final class ISO3166 implements \Countable, \IteratorAggregate, ISO3166DataProvid
         ],
         [
             'name' => 'Zimbabwe',
+            'short_name' => 'Zimbabwe',
             'alpha2' => 'ZW',
             'alpha3' => 'ZWE',
             'numeric' => '716',
