@@ -1,6 +1,6 @@
 {
-    "name": "league/iso3166",
-    "description": "ISO 3166-1 PHP Library",
+    "name": "wizory/iso3166",
+    "description": "ISO 3166-1 PHP Library w/ Extensions",
     "autoload": {
         "psr-4": { "League\\ISO3166\\": "src" }
     },
@@ -23,14 +23,18 @@
         "branch-alias": { "dev-master": "2.x-dev" }
     },
     "keywords": ["ISO 3166", "ISO", "3166", "3166-1", "countries", "library"],
-    "homepage": "https://github.com/thephpleague/iso3166",
+    "homepage": "https://github.com/wizory/iso3166",
     "license": "MIT",
-    "authors": [{
-        "name": "Rob Bast",
-        "email": "rob.bast@gmail.com"
-    }],
+    "authors": [
+        {
+            "name": "Rob Bast",
+            "email": "rob.bast@gmail.com"
+        },
+            "name": "Wizory",
+            "email": "support@wizory.com"
+    ],
     "support": {
-        "issues": "https://github.com/thephpleague/iso3166/issues",
-        "source": "https://github.com/thephpleague/iso3166"
+        "issues": "https://github.com/wizory/iso3166/issues",
+        "source": "https://github.com/wizory/iso3166"
     }
 }
